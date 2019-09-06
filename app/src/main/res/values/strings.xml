@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FillAndGo</string>
     <string name="map_key" translatable="false">AIzaSyAWGYit_TRSJZFCIbmgdiYXS_18c-Q1duA</string>
+    <string name="titleHead"><b>FILL AND GO</b></string>
 </resources>

@@ -187,8 +187,8 @@
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/ic_directions_car_black_24dp"
 
         android:spinnerMode="dialog" />
@@ -203,6 +203,24 @@
         android:layout_marginTop="13dp"
         android:background="@drawable/ic_add_circle_outline_black_24dp"
         android:onClick="AddCar" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="162dp"
+        android:layout_height="47dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="121dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="127dp"
+        android:background="@drawable/titleradius"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="@string/titleHead"
+        android:textAlignment="center" />
 
 
 </RelativeLayout>
