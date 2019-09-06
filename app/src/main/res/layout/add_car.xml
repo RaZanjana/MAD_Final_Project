@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+
+        ></include>
+    <EditText
+        android:id="@+id/carname"
+        android:layout_width="284dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="152dp"
+        android:ems="10"
+        android:hint="Your Car Name"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="36dp"
+        android:text="ADD Car"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2"
+        android:onClick="addCar"
+        />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="278dp"
+        android:layout_height="146dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.573"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carname">
+
+        <RadioButton
+            android:id="@+id/radio_95petrol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="95Petrol" />
+
+        <RadioButton
+            android:id="@+id/radio_92petrol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="92Petrol" />
+
+        <RadioButton
+            android:id="@+id/radio_diesel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Diesel" />
+
+        <RadioButton
+            android:id="@+id/radio_superdiesel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Super Diesel" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:onClick="goBack"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
