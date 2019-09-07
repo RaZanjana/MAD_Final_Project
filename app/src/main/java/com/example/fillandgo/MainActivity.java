@@ -331,7 +331,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     void createMarkersFromJson(String json, String fueltype) throws JSONException {
-        map.setInfoWindowAdapter(new ViewInfoAdapter(MainActivity.this));
+
         int heightx = 100;
         int widthx = 100;
         BitmapDrawable bitmapdrawx = (BitmapDrawable) getResources().getDrawable(R.drawable.usericon);
@@ -698,7 +698,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             map.animateCamera(CameraUpdateFactory.newLatLng(nearestLocation));
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(nearestLocation, 15));
         }
-
+        map.setInfoWindowAdapter(new ViewInfoAdapter(MainActivity.this));
     }
 }
 
