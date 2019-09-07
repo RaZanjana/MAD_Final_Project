@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private DatabaseManager db;
 
     private Spinner spinner;
+    TextView head;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,6 +149,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 setUpMap("superdiesel");
             }
         });
+
+        head = (TextView)findViewById(R.id.textView2);
     }
 
     @Override
@@ -343,8 +347,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     void createMarkersFromJson(String json, String fueltype) throws JSONException {
 
-        int heightx = 100;
-        int widthx = 100;
+        int heightx = 80;
+        int widthx = 80;
         BitmapDrawable bitmapdrawx = (BitmapDrawable) getResources().getDrawable(R.drawable.usericon);
         Bitmap x = bitmapdrawx.getBitmap();
         Bitmap smallMarkerx = Bitmap.createScaledBitmap(x, widthx, heightx, false);
@@ -354,7 +358,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         if (fueltype.equals("petrol")) {
             map.clear();
-            Circle circle = map.addCircle(new CircleOptions().center(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())).radius(5000).strokeColor(Color.GRAY).fillColor(0x22000000));
+            head.setText("Octane 92");
             MarkerOptions markerOptions = new MarkerOptions()
                     .position(latLng).title("I Am Here!")
                     .snippet("Current User Location")
@@ -372,7 +376,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 // Create a marker for each city in the JSON data.
 
                 JSONObject jsonObj = jsonArray.getJSONObject(i);
-                String fuelavailability = jsonObj.getString("Petrol92_status");
                 String fueltypes = jsonObj.getString("sproducts");
                 String[] fueltypes1 = fueltypes.split(",");
                 for (int j = 0; j < fueltypes1.length; j++) {
@@ -386,8 +389,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         String atm = jsonObj.getString("atm");
                         String supermarket = jsonObj.getString("market");
                         String id = jsonObj.getString("s_id");
-                        String contact = jsonObj.getString("contact");
-                        String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address+ "\n" + "Contact no: " + contact + "\n"+ "Current Availability: " + fuelavailability + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                        String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                         map.addMarker(new MarkerOptions()
                                 .position(PERTH)
                                 .title(title)
@@ -403,7 +405,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (fueltype.equals("diesel")) {
 
             map.clear();
-            Circle circle = map.addCircle(new CircleOptions().center(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())).radius(5000).strokeColor(Color.GRAY).fillColor(0x22000000));
+            head.setText("Lanka Auto Diesel");
             MarkerOptions markerOptions = new MarkerOptions()
                     .position(latLng).title("I Am Here!")
                     .snippet("Current User Location")
@@ -421,7 +423,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 JSONObject jsonObj = jsonArray.getJSONObject(i);
                 String fueltypes = jsonObj.getString("sproducts");
-                String fuelavailability=jsonObj.getString("LAD_status");
                 String[] fueltypes1 = fueltypes.split(",");
                 for (int j = 0; j < fueltypes1.length; j++) {
                     if (fueltypes1[j].equals("LAD")) {
@@ -434,8 +435,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         String atm = jsonObj.getString("atm");
                         String supermarket = jsonObj.getString("market");
                         String id = jsonObj.getString("s_id");
-                        String contact = jsonObj.getString("contact");
-                        String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address+ "\n" + "Contact no: " + contact + "\n"+ "Current Availability: " + fuelavailability + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                        String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                         map.addMarker(new MarkerOptions()
                                 .position(PERTH)
                                 .title(title)
@@ -450,7 +450,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         if (fueltype.equals("superdiesel")) {
             map.clear();
-            Circle circle = map.addCircle(new CircleOptions().center(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())).radius(5000).strokeColor(Color.GRAY).fillColor(0x22000000));
+            head.setText("Lanka Auto Diesel");
             MarkerOptions markerOptions = new MarkerOptions()
                     .position(latLng).title("I Am Here!")
                     .snippet("Current User Location")
@@ -467,9 +467,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 // Create a marker for each city in the JSON data.
 
                 JSONObject jsonObj = jsonArray.getJSONObject(i);
-                String fuelavailability = jsonObj.getString("LSD_status");
                 String fueltypes = jsonObj.getString("sproducts");
-
                 String[] fueltypes1 = fueltypes.split(",");
                 for (int j = 0; j < fueltypes1.length; j++) {
                     if (fueltypes1[j].equals("LSD")) {
@@ -482,8 +480,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         String atm = jsonObj.getString("atm");
                         String supermarket = jsonObj.getString("market");
                         String id = jsonObj.getString("s_id");
-                        String contact = jsonObj.getString("contact");
-                        String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address+ "\n" + "Contact no: " + contact + "\n"+ "Current Availabilty: " + fuelavailability + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                        String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                         map.addMarker(new MarkerOptions()
                                 .position(PERTH)
                                 .title(title)
@@ -498,7 +495,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         if (fueltype.equals("superpetrol")) {
             map.clear();
-            Circle circle = map.addCircle(new CircleOptions().center(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())).radius(5000).strokeColor(Color.GRAY).fillColor(0x22000000));
+            head.setText("Octane 95");
             MarkerOptions markerOptions = new MarkerOptions()
                     .position(latLng).title("I Am Here!")
                     .snippet("Current User Location")
@@ -515,8 +512,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 // Create a marker for each city in the JSON data.
 
                 JSONObject jsonObj = jsonArray.getJSONObject(i);
-                String fuelavailability = jsonObj.getString("LSD_status");
-                String fueltypes = jsonObj.getString("sproducts");
                 String title = jsonObj.getString("name");
                 String address = jsonObj.getString("saddress");
                 String city = jsonObj.getString("scity");
@@ -524,10 +519,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String bathroom = jsonObj.getString("bathroom");
                 String atm = jsonObj.getString("atm");
                 String supermarket = jsonObj.getString("market");
-
+                String fueltypes = jsonObj.getString("sproducts");
                 String id = jsonObj.getString("s_id");
-                String contact = jsonObj.getString("contact");
-                String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Contact no: " + contact + "\n"+ "Current Availability: " +fuelavailability + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                 String[] fueltypes1 = fueltypes.split(",");
                 for (int j = 0; j < fueltypes1.length; j++) {
                     if (fueltypes1[j].equals("95Petrol")) {
@@ -547,7 +541,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         if (fueltype.equals("LK")) {
             map.clear();
-            Circle circle = map.addCircle(new CircleOptions().center(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())).radius(5000).strokeColor(Color.GRAY).fillColor(0x22000000));
+            head.setText("Lanka Kerosene");
             MarkerOptions markerOptions = new MarkerOptions()
                     .position(latLng).title("I Am Here!")
                     .snippet("Current User Location")
@@ -563,7 +557,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             for (int i = 0; i < jsonArray.length(); i++) {
                 // Create a marker for each city in the JSON data.
                 JSONObject jsonObj = jsonArray.getJSONObject(i);
-                String fuelavailability = jsonObj.getString("LK_status");
                 String fueltypes = jsonObj.getString("sproducts");
                 String[] fueltypes1 = fueltypes.split(",");
                 for (int j = 0; j < fueltypes1.length; j++) {
@@ -577,8 +570,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         String atm = jsonObj.getString("atm");
                         String supermarket = jsonObj.getString("market");
                         String id = jsonObj.getString("s_id");
-                        String contact = jsonObj.getString("contact");
-                        String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Contact no: " + contact + "\n"+ "Current Availability: " +fuelavailability+ "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                        String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                         map.addMarker(new MarkerOptions()
                                 .position(PERTH)
                                 .title(title)
@@ -593,7 +585,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         if (fueltype.equals("all")) {
             map.clear();
-            Circle circle = map.addCircle(new CircleOptions().center(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())).radius(5000).strokeColor(Color.GRAY).fillColor(0x22000000));
             MarkerOptions markerOptions = new MarkerOptions()
                     .position(latLng).title("I Am Here!")
                     .snippet("Current User Location")
@@ -601,8 +592,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13.5f));
             map.addMarker(markerOptions);
-            int height = 80;
-            int width = 80;
+            int height = 60;
+            int width = 60;
             BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.gas);
             Bitmap b = bitmapdraw.getBitmap();
             Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
@@ -619,8 +610,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String atm = jsonObj.getString("atm");
                 String supermarket = jsonObj.getString("market");
                 String id = jsonObj.getString("s_id");
-                String contact = jsonObj.getString("contact");
-                String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Contact no: " + contact + "\n"+ "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                 map.addMarker(new MarkerOptions()
                         .position(PERTH)
                         .title(title)
@@ -640,8 +630,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13.5f));
             map.addMarker(markerOptions);
             // De-serialize the JSON string into an array of city objects
-            int height = 80;
-            int width = 80;
+            int height = 60;
+            int width = 60;
             BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.gas);
             Bitmap b = bitmapdraw.getBitmap();
             Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
@@ -659,9 +649,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String atm = jsonObj.getString("atm");
                 String supermarket = jsonObj.getString("market");
                 String fueltypes = jsonObj.getString("sproducts");
-                String contact = jsonObj.getString("contact");
                 String id = jsonObj.getString("s_id");
-                String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" +  "Contact no: " + contact + "\n" +"Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
 
                 currentMarker = new MarkerOptions()
                         .title(title)
@@ -688,8 +677,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             double longi = 0;
             double lati = 0;
             map.clear();
-            int height = 80;
-            int width = 80;
+            int height = 60;
+            int width = 60;
             BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.gas);
             Bitmap b = bitmapdraw.getBitmap();
             Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
@@ -707,9 +696,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String atm = jsonObj.getString("atm");
                 String supermarket = jsonObj.getString("market");
                 String fueltypes = jsonObj.getString("sproducts");
-                String contact = jsonObj.getString("contact");
                 String id = jsonObj.getString("s_id");
-                String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Contact no: " + contact +"\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                 currentMarker = new MarkerOptions()
                         .title(title)
                         .snippet(all)

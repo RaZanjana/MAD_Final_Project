@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/infoback"
     android:padding="10dp"
 
 
@@ -19,7 +19,8 @@
             android:layout_gravity="center_horizontal"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="#000"
+            android:background="#000"
+            android:textColor="#fff"
             android:textSize="14sp"
             android:textStyle="bold"/>
     <TextView
