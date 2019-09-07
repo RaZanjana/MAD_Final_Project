@@ -141,7 +141,7 @@
             android:id="@+id/LSD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_directions_car_black_24dp"
+            android:src="@drawable/ic_place_black_24dp"
             fab:fab_label="Lanka Super Diesel"
             fab:fab_size="mini" />
 
@@ -149,7 +149,7 @@
             android:id="@+id/LAD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_location_black_24dp"
+            android:src="@drawable/ic_place_black_24dp"
             fab:fab_label="Lanka Auto Diesel"
             fab:fab_size="mini" />
 
@@ -158,7 +158,7 @@
             android:id="@+id/p95"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_settings_input_antenna_black_24dp"
+            android:src="@drawable/ic_place_black_24dp"
             fab:fab_label="Octane 95 Petrol"
             fab:fab_size="mini" />
 
@@ -166,7 +166,7 @@
             android:id="@+id/p92"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_playlist_play_black_24dp"
+            android:src="@drawable/ic_place_black_24dp"
             fab:fab_label="Octane 92 Petrol"
             fab:fab_size="mini" />
 
@@ -174,7 +174,7 @@
             android:id="@+id/LK"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_directions_car_black_24dp"
+            android:src="@drawable/ic_place_black_24dp"
             fab:fab_label="Lanka Kerosene"
             fab:fab_size="mini" />
 

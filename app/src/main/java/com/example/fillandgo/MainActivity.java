@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -35,7 +34,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -49,7 +47,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -140,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         LAD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setUpMap("Diesel");
+                setUpMap("diesel");
             }
         });
         LSD.setOnClickListener(new View.OnClickListener() {
@@ -221,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-    public void AddCar(View v){
+    public void AddCar(View v) {
         Intent addIntent = new Intent(this, Add_car.class);
         this.startActivity(addIntent);
     }
@@ -350,9 +347,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
             map.addMarker(markerOptions);
-            int height = 80;
-            int width = 80;
-            BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.gas);
+            int height = 90;
+            int width = 60;
+            BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.oct92);
             Bitmap b = bitmapdraw.getBitmap();
             Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
 
@@ -372,7 +369,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         String bathroom = jsonObj.getString("bathroom");
                         String atm = jsonObj.getString("atm");
                         String supermarket = jsonObj.getString("market");
-                        String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+
+                        String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                         map.addMarker(new MarkerOptions()
                                 .position(PERTH)
                                 .title(title)
@@ -395,9 +393,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
             map.addMarker(markerOptions);
-            int height = 80;
-            int width = 80;
-            BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.gas);
+            int height = 90;
+            int width = 60;
+            BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.lad);
             Bitmap b = bitmapdraw.getBitmap();
             Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -416,7 +414,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         String bathroom = jsonObj.getString("bathroom");
                         String atm = jsonObj.getString("atm");
                         String supermarket = jsonObj.getString("market");
-                        String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                        String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                         map.addMarker(new MarkerOptions()
                                 .position(PERTH)
                                 .title(title)
@@ -438,9 +436,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
             map.addMarker(markerOptions);
-            int height = 80;
-            int width = 80;
-            BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.gas);
+            int height = 90;
+            int width = 60;
+            BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.lsd);
             Bitmap b = bitmapdraw.getBitmap();
             Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -459,7 +457,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         String bathroom = jsonObj.getString("bathroom");
                         String atm = jsonObj.getString("atm");
                         String supermarket = jsonObj.getString("market");
-                        String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                        String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                         map.addMarker(new MarkerOptions()
                                 .position(PERTH)
                                 .title(title)
@@ -481,28 +479,29 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
             map.addMarker(markerOptions);
-            int height = 80;
-            int width = 80;
-            BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.gas);
+            int height = 90;
+            int width = 60;
+            BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.oct95);
             Bitmap b = bitmapdraw.getBitmap();
             Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
             for (int i = 0; i < jsonArray.length(); i++) {
                 // Create a marker for each city in the JSON data.
 
                 JSONObject jsonObj = jsonArray.getJSONObject(i);
+                String title = jsonObj.getString("name");
+                String address = jsonObj.getString("saddress");
+                String city = jsonObj.getString("scity");
+                String air = jsonObj.getString("air");
+                String bathroom = jsonObj.getString("bathroom");
+                String atm = jsonObj.getString("atm");
+                String supermarket = jsonObj.getString("market");
                 String fueltypes = jsonObj.getString("sproducts");
+                String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                 String[] fueltypes1 = fueltypes.split(",");
                 for (int j = 0; j < fueltypes1.length; j++) {
                     if (fueltypes1[j].equals("95Petrol")) {
                         LatLng PERTH = new LatLng(jsonObj.getDouble("latitude"), jsonObj.getDouble("longitude"));
-                        String title = jsonObj.getString("name");
-                        String address = jsonObj.getString("saddress");
-                        String city = jsonObj.getString("scity");
-                        String air = jsonObj.getString("air");
-                        String bathroom = jsonObj.getString("bathroom");
-                        String atm = jsonObj.getString("atm");
-                        String supermarket = jsonObj.getString("market");
-                        String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+
                         map.addMarker(new MarkerOptions()
                                 .position(PERTH)
                                 .title(title)
@@ -524,14 +523,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
             map.addMarker(markerOptions);
-            int height = 80;
-            int width = 80;
-            BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.gas);
+            int height = 90;
+            int width = 60;
+            BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.lk);
             Bitmap b = bitmapdraw.getBitmap();
             Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
             for (int i = 0; i < jsonArray.length(); i++) {
                 // Create a marker for each city in the JSON data.
-
                 JSONObject jsonObj = jsonArray.getJSONObject(i);
                 String fueltypes = jsonObj.getString("sproducts");
                 String[] fueltypes1 = fueltypes.split(",");
@@ -545,7 +543,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         String bathroom = jsonObj.getString("bathroom");
                         String atm = jsonObj.getString("atm");
                         String supermarket = jsonObj.getString("market");
-                        String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                        String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                         map.addMarker(new MarkerOptions()
                                 .position(PERTH)
                                 .title(title)
@@ -574,11 +572,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
             for (int i = 0; i < jsonArray.length(); i++) {
                 // Create a marker for each city in the JSON data.
-
-
                 JSONObject jsonObj = jsonArray.getJSONObject(i);
                 String fueltypes = jsonObj.getString("sproducts");
-
                 LatLng PERTH = new LatLng(jsonObj.getDouble("latitude"), jsonObj.getDouble("longitude"));
                 String title = jsonObj.getString("name");
                 String address = jsonObj.getString("saddress");
@@ -587,7 +582,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String bathroom = jsonObj.getString("bathroom");
                 String atm = jsonObj.getString("atm");
                 String supermarket = jsonObj.getString("market");
-                String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                 map.addMarker(new MarkerOptions()
                         .position(PERTH)
                         .title(title)
@@ -604,7 +599,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     .snippet("Current User Location")
                     .icon(BitmapDescriptorFactory.fromBitmap(smallMarkerx));
             map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13.5f));
             map.addMarker(markerOptions);
             // De-serialize the JSON string into an array of city objects
             int height = 80;
@@ -625,7 +620,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String bathroom = jsonObj.getString("bathroom");
                 String atm = jsonObj.getString("atm");
                 String supermarket = jsonObj.getString("market");
-                String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                String fueltypes = jsonObj.getString("sproducts");
+                String all = "City: " + city + "\n" + "Address: " + address +"\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                 currentMarker = new MarkerOptions()
                         .title(title)
                         .snippet(all)
@@ -669,7 +665,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String bathroom = jsonObj.getString("bathroom");
                 String atm = jsonObj.getString("atm");
                 String supermarket = jsonObj.getString("market");
-                String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                String fueltypes = jsonObj.getString("sproducts");
+                String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                 currentMarker = new MarkerOptions()
                         .title(title)
                         .snippet(all)
