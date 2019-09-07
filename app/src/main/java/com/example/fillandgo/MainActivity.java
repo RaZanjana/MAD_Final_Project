@@ -34,6 +34,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -261,6 +262,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         map.addMarker(markerOptions);
 
         setUpMap("fiveKm");
+        map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+
+                String snippet = marker.getSnippet();
+                String[] ids=snippet.split("\\s+");
+                String id= ids[1];
+                Intent intent = new Intent(MainActivity.this,EmailActivity.class);
+                intent.putExtra("FUEL_STATION_ID",id);
+                MainActivity.this.startActivity(intent);
+            }
+
+        });
     }
 
     @Override
@@ -369,8 +383,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         String bathroom = jsonObj.getString("bathroom");
                         String atm = jsonObj.getString("atm");
                         String supermarket = jsonObj.getString("market");
-
-                        String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                        String id = jsonObj.getString("s_id");
+                        String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                         map.addMarker(new MarkerOptions()
                                 .position(PERTH)
                                 .title(title)
@@ -414,7 +428,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         String bathroom = jsonObj.getString("bathroom");
                         String atm = jsonObj.getString("atm");
                         String supermarket = jsonObj.getString("market");
-                        String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                        String id = jsonObj.getString("s_id");
+                        String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                         map.addMarker(new MarkerOptions()
                                 .position(PERTH)
                                 .title(title)
@@ -457,7 +472,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         String bathroom = jsonObj.getString("bathroom");
                         String atm = jsonObj.getString("atm");
                         String supermarket = jsonObj.getString("market");
-                        String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                        String id = jsonObj.getString("s_id");
+                        String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                         map.addMarker(new MarkerOptions()
                                 .position(PERTH)
                                 .title(title)
@@ -496,7 +512,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String atm = jsonObj.getString("atm");
                 String supermarket = jsonObj.getString("market");
                 String fueltypes = jsonObj.getString("sproducts");
-                String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                String id = jsonObj.getString("s_id");
+                String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                 String[] fueltypes1 = fueltypes.split(",");
                 for (int j = 0; j < fueltypes1.length; j++) {
                     if (fueltypes1[j].equals("95Petrol")) {
@@ -543,7 +560,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         String bathroom = jsonObj.getString("bathroom");
                         String atm = jsonObj.getString("atm");
                         String supermarket = jsonObj.getString("market");
-                        String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                        String id = jsonObj.getString("s_id");
+                        String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                         map.addMarker(new MarkerOptions()
                                 .position(PERTH)
                                 .title(title)
@@ -582,7 +600,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String bathroom = jsonObj.getString("bathroom");
                 String atm = jsonObj.getString("atm");
                 String supermarket = jsonObj.getString("market");
-                String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                String id = jsonObj.getString("s_id");
+                String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                 map.addMarker(new MarkerOptions()
                         .position(PERTH)
                         .title(title)
@@ -621,7 +640,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String atm = jsonObj.getString("atm");
                 String supermarket = jsonObj.getString("market");
                 String fueltypes = jsonObj.getString("sproducts");
-                String all = "City: " + city + "\n" + "Address: " + address +"\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                String id = jsonObj.getString("s_id");
+                String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+
                 currentMarker = new MarkerOptions()
                         .title(title)
                         .snippet(all)
@@ -666,7 +687,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String atm = jsonObj.getString("atm");
                 String supermarket = jsonObj.getString("market");
                 String fueltypes = jsonObj.getString("sproducts");
-                String all = "City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
+                String id = jsonObj.getString("s_id");
+                String all = "ID: "+id+"\n"+"City: " + city + "\n" + "Address: " + address + "\n" + "Products: " + fueltypes + "\n" + "Air: " + air + "\n" + "Bathroom: " + bathroom + "\n" + "ATM: " + atm + "\n" + "Supermarket: " + supermarket;
                 currentMarker = new MarkerOptions()
                         .title(title)
                         .snippet(all)
