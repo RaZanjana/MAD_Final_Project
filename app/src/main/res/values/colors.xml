@@ -3,4 +3,13 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="colorsilde1">#009688</color>
+    <color name="colorsilde2">#795548</color>
+    <color name="colorsilde3">#8BC34A</color>
+    <color name="colorsilde4">#3F51B5</color>
+
+    <color name="active_dots">#fffafa</color>
+    <color name="inactive_dots">#83878b</color>
+
 </resources>

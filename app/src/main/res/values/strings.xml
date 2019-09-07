@@ -2,4 +2,15 @@
     <string name="app_name">FillAndGo</string>
     <string name="map_key" translatable="false">AIzaSyAWGYit_TRSJZFCIbmgdiYXS_18c-Q1duA</string>
     <string name="titleHead"><b>FILL AND GO</b></string>
+
+    <string name="slide_1_title">FillAndGO</string>
+    <string name="silde_1_desc">Find nearby fuel stations</string>
+    <string name="slide_2_title">FillAndGO</string>
+    <string name="silde_2_desc">Find nearby fuel stations</string>
+    <string name="slide_3_title">FillAndGO</string>
+    <string name="silde_3_desc">Find nearby fuel stations</string>
+    <string name="slide_4_title">FillAndGO</string>
+    <string name="silde_4_desc">Find nearby fuel stations</string>
+    <string name="my_preference">"com.abc.com.MyPref"</string>
+    <string name="my_preference_key">"com.abc.com.MyPrefKey"</string>
 </resources>
